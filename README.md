@@ -8,9 +8,9 @@ This is an all-in-one website to host documentation, blog, and notes.
 
 View the docs on the following websites/mirrors.
 
-- [Cloudflare Pages]()
-- [Netlify]()
-- [Vercel]()
+- [Cloudflare Pages](https://visceral.pages.dev)
+- [Netlify](https://visceral.netlify.app)
+- [Vercel](https://visceral.vercel.app)
 
 ## Credits
 
