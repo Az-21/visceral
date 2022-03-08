@@ -6,7 +6,7 @@ export default defineUserConfig<DefaultThemeOptions>({
   // site config
   lang: "en-US",
   title: "Visceral",
-  description: "Documentation for Az-21's projects.",
+  description: "☄️ Document Everything",
 
   // theme and its config
   theme: "@vuepress/theme-default",
