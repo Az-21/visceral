@@ -12,6 +12,7 @@ export default defineUserConfig<DefaultThemeOptions>({
   theme: "@vuepress/theme-default",
   themeConfig: {
     base: "/vuepress/",
+    docsDir: "/vuepress/",
     repo: "Az-21/visceral",
     logo: "https://vuejs.org/images/logo.png",
     sidebar: sidebar.en,
