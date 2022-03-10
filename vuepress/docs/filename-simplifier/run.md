@@ -3,7 +3,6 @@
 ## Prepare for Launch
 
 - If you have added the program to PATH, open your terminal.
-
 - If you have not added the program to PATH, `Shift` + `Right Click` in the `simplify` folder and select 'Open Powershell Window Here'.
 
 ::: tip INFO

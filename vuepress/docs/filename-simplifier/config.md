@@ -2,9 +2,9 @@
 
 ## Config File
 
-* Configuration file can be found in `simplify\config\config.json`
-* Open this file with Notepad (or your IDE).
-* Edit the parameters to modify the behavior of app.
+- Configuration file can be found in `simplify\config\config.json`
+- Open this file with Notepad (or your IDE).
+- Edit the parameters to modify the behavior of app.
 
 ## Default Library Path
 
@@ -29,8 +29,8 @@ If no directory argument is provided, the `LibraryPath` will be considered autom
 "GetAllDirectories": true
 ```
 
-* `true` ⟶ Include **all** sub-folders.
-* `false` ⟶ Rename only the top level contents.
+- `true` ⟶ Include **all** sub-folders.
+- `false` ⟶ Rename only the top level contents.
 
 ## Extensions
 
@@ -42,6 +42,7 @@ This is a **comma-separated** list of extension which will be renamed.
 ```
 
 #### Sample I/O
+
 ```md:no-line-numbers
 # Input
 movie a.mp4             // `mp4` is present in `"Extensions"`
@@ -62,11 +63,13 @@ This is a **comma-separated** list of words and characters which will be replace
 
 // NOTE: blacklisted words are case sensitive
 ```
+
 ::: warning
 Do not add standard English **letters** and **short words** in the blacklist. The program is not context aware, and it will remove every occurrence of blacklisted word/character.
 :::
 
 #### Sample I/O
+
 ```md:no-line-numbers
 # Input
 movie-a_webrip.x264.mp4
@@ -75,7 +78,6 @@ movie-a_webrip.x264.mp4
 Movie A.mp4
 ```
 
-
 ## Remove Parentheses
 
 ```json:no-line-numbers
@@ -83,10 +85,11 @@ Movie A.mp4
 "RemoveCurvedBracket": true
 ```
 
-* `true` ⟶ remove parentheses and the text within it.
-* `false` ⟶ keep parentheses and the text within it `(text)`.
+- `true` ⟶ remove parentheses and the text within it.
+- `false` ⟶ keep parentheses and the text within it `(text)`.
 
 #### Sample I/O
+
 ```md:no-line-numbers
 # Input
 movie a (OPUS GroupX UploaderY).mp4
@@ -102,10 +105,11 @@ Movie A.mp4
 "RemoveSquareBracket": true
 ```
 
-* `true` ⟶ remove square bracket and the text within it.
-* `false` ⟶ keep square bracket and the text within it `[text]`.
+- `true` ⟶ remove square bracket and the text within it.
+- `false` ⟶ keep square bracket and the text within it `[text]`.
 
 #### Sample I/O
+
 ```md:no-line-numbers
 # Input
 [GroupX UploaderY] movie a [HEVC x256 OPUS].mp4
@@ -124,10 +128,11 @@ Replace the spaces in the file/folder name to make them CLI friendly.
 "CliSeparator": "-"
 ```
 
-* `true` ⟶ replace spaces in filename with `CliSeparator`.
-* `false` ⟶ retain spaces in filename.
+- `true` ⟶ replace spaces in filename with `CliSeparator`.
+- `false` ⟶ retain spaces in filename.
 
 #### Sample I/O
+
 ```md:no-line-numbers
 # Input
 movie a.mp4
