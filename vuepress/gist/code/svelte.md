@@ -4,19 +4,19 @@ SvelteKit setup with support for TailwindCSS and Vercel.
 
 ## Create SvelteKit Project
 
-```powershell
+```sh
 npm init svelte@next .
 ```
 
 ## Add Tailwind CSS
 
-```powershell
+```sh
 npx svelte-add@latest tailwindcss
 ```
 
 ## Finalize
 
-```powershell
+```sh
 npm install
 npm run dev -- --open
 ```
