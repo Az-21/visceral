@@ -17,4 +17,5 @@ export default defineUserConfig<DefaultThemeOptions>({
     logo: "https://vuejs.org/images/logo.png",
     sidebar: sidebar.en,
   },
+  plugins: [["@vuepress/plugin-shiki", { theme: "material-darker" }]],
 });
