@@ -31,3 +31,167 @@ Digital image processing is manipulation of the digital images by using computer
 10. **Object recognition** ⟶ process that assigns a label. Example: assigning `vehicle` label to an object based on its descriptors.
 
 11. **Knowledge base** ⟶ inference from the processed image. It can involve anything from simple process of detailing regions of an image where the information of interest is known to be located, to complex process of generation interrelated list of all major possible defects in a materials inspection problem.
+
+## Components of an Image Processing System
+
+![Block Diagram](https://media.geeksforgeeks.org/wp-content/uploads/20191204123048/Capture666.png)
+
+- **Image sensors** ⟶ senses the intensity, amplitude, co-ordinates, and other features of the images and passes the result to the image processing hardware. It includes the problem domain.
+
+- **Image processing hardware** ⟶ dedicated hardware that is used to process the instructions obtained from the image sensors.
+
+- **Computer** ⟶ image processing hardware which runs the image processing software.
+
+- **Image processing software** ⟶ software that includes all the mechanisms and algorithms that are used in an image processing system.
+
+- **Mass storage** ⟶ stores the pixels of the images during the processing.
+
+- **Hard copy device** ⟶ permanent storage of processed output. It can be an SSD, pen drive, or any external ROM device.
+
+- **Image display** ⟶ the monitor or display screen that displays the processed images.
+
+- **Network** ⟶ connection of all the above elements of the image processing system.
+
+## Elements of Visual Perception
+
+In human visual perception, the eyes act as the sensor or camera, neurons act as the connecting cable and the brain acts as the processor.
+
+#### Structure of Eye
+
+![Eye Anatomy](https://images.ctfassets.net/u4vv676b8z52/3EEHqBUTHts5Cx52uy2UP7/ab761a14fd65b921062b8691b54f3f80/eye-anatomy-700x635.jpg)
+
+- The human eye is a slightly asymmetrical sphere with an average diameter of the length of `20 mm` to `25 mm`. It has a volume of about `6.5 cc`.
+
+- Light enters the eye through a small hole called the pupil, a black looking aperture having the quality of contraction of eye when exposed to bright light and is focused on the retina which is like a camera film.
+
+- The lens, iris, and cornea are nourished by clear fluid, know as anterior chamber. Balance of aqueous production and absorption controls pressure within the eye.
+
+- Cones in eye number between 6 to 7 million which are highly sensitive to colors. Cones helps us visualize color.
+
+- Rods in eye number between 75 to 150 million which sensitive to low levels of illumination. Rods helps us visualize light intensity i.e. grayscale.
+
+#### Image Formation
+
+![Ray Diagram](https://cdn1.byjus.com/wp-content/uploads/2018/11/Functioning-of-the-Human-eye.png)
+
+- The lens of the eye focuses light on the photoreceptive cells of the retina which detects the photons of light and responds by producing neural impulses.
+
+- The distance between the lens and the retina is about `17 mm` and the focal length is approximately `14 mm` to `17 mm`.
+
+## Image Sensing and Acquisition
+
+![Components](https://blog.kakaocdn.net/dn/wg5fW/btq2D4AwyOQ/VB1KeUC63tmJigJ0zOpnkK/img.png)
+
+- Incoming energy is transformed into a voltage by the combination of input electrical power and sensor material that is responsive to the particular type of energy being detected. Example, camera detects wavelength intensity in the visible spectrum.
+
+- An array of these sensors measures energy across length `l` and width `dw`.
+
+![Motion](https://t1.daumcdn.net/cfile/tistory/25457F35586103D233)
+
+- The sensing array then moves a certain distance, giving the array new set of inputs. Doing this sweep along the entire area gives us an image matrix `l x w`.
+
+::: tip NOTE
+This process an analog voltage signal, which must then be sampled and quantized to produce a digital image.
+:::
+
+## Image Sampling and Quantization
+
+![](https://slideplayer.com/slide/15463344/93/images/4/Changing+analog+signal+to+digital+signal%3A+Sampling+%EF%83%A0+Quantizing+%EF%83%A0+Coding.jpg)
+
+#### Sampling
+
+- Continuous-time analog signal is sampled by measuring its amplitude at a discrete instants spaced uniformly in time `T`.
+
+- As long as the sampling of the analog signal is taken with a sufficiently high frequency (higher than the minimum Nyquist rate of twice the signal largest frequency), there is no loss in information as a result of taking discrete samples.
+
+#### Quantization
+
+- The sample values have to be quantized to a finite number of levels, and each value can then be represented by a string of bits.
+
+- For example, color channels in `JPEG` images are usually quantized in `256` levels of intensity.
+
+#### Encoding
+
+- The quantized signal is then encoded into a standardized image format: `PNG`, `JPEG`, `RAW`, `TIFF`.
+
+## Relation Between Pixels
+
+#### Neighbors
+
+- **N<sub>4</sub>** ⟶ horizontal + vertical neighbors.
+- **N<sub>D</sub>** ⟶ diagonal neighbors.
+- **N<sub>8</sub>** ⟶ N<sub>4</sub> ∪ N<sub>D</sub>.
+
+#### Path
+
+- **N<sub>4</sub> path** ⟶ minimum distance path using N<sub>4</sub> movement.
+- **N<sub>8</sub> path** ⟶ minimum distance path using N<sub>8</sub> movement.
+- **M path** ⟶ N<sub>4</sub> movement on priority; N<sub>8</sub> movement only if N<sub>4</sub> movement is not possible.
+  - If N<sub>4</sub> path exists, M path equals N<sub>4</sub> path by definition.
+
+#### Distance
+
+- **Euclidean distance**
+
+  - Straight line distance between two points.
+  - d<sub>eu</sub> = √(Δx<sup>2</sup> + Δy<sup>2</sup>)
+
+- **Cityblock distance**
+
+  - N<sub>4</sub> path distance
+  - d<sub>ci</sub> = Σ | Δx | + | Δy | + | Δz |
+
+- **Chessboard distance**
+  - Longest distance along **one** axis
+  - d<sub>ch</sub> = max ( | Δx | , | Δy | , | Δz | )
+
+#### Distance <Badge text="CODE" vertical="middle"/>
+
+```matlab
+% Artificial image
+img = zeros(4, 4);
+img(3, 3) = 1;
+disp(img);
+
+% Distance
+distEu = bwdist(img, "euclidean")
+distCb = bwdist(img, "cityblock")
+distCh = bwdist(img, "chessboard")
+```
+
+## Linear and Non-Linear Operations
+
+#### `H(af + bg) = aH(f) + bH(g)`
+
+- `H` ⟶ operation
+- `a` and `b` ⟶ scalers
+- `f` and `g` ⟶ images
+
+- **Linear operation** ⟶ satisfies this condition and therefore can be expressed using **convolution** and **frequency shaping**
+- **Non-linear operation** ⟶ does not satisfy this condition
+
+## Numericals on Scanning
+
+#### Important info
+
+- n-bit depth of an image corresponds to 2<sup>k</sup> colors/levels.
+- Packet with [start | data | end] increase the n-bit depth by `start + end`, usually 2.
+- Baud rate is basically the speed of scan.
+- For good quality scans, a minimum of `2 pixels/cycles` sampling resolution is required.
+- `1 inch` = `2.54 cm`
+
+#### 1. Memory
+
+##### `bits = width x height x k`
+
+#### 2. Scan time
+
+##### `time = bits / baud rate`
+
+#### 3. Sampling resolution
+
+##### `res = (cycle / mm) * (pixel / cycle)`
+
+## Numerical on Image Formation
+
+##### `height of object / eye-to-object distance = height of image / eye-to-retina distance`
