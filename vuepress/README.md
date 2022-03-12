@@ -12,6 +12,9 @@ actions:
   - text: Notes
     link: /notes/
     type: secondary
+  - text: Course
+    link: /course/
+    type: secondary
 features:
   - title: Blog
     details: Writing down my thoughts on what's happening around.
