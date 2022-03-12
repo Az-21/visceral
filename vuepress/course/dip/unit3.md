@@ -103,6 +103,50 @@ f(x + i, y + j) = | 10  20  30 |
 Minimum(10, 20, 30, 10, 50, 90, 50, 50, 70) = 10
 ```
 
+### Geometric Mean Filter
+
+Takes the geometric mean of values under the mask.
+
+```cs:no-line-numbers
+// Geometric mean ⟶ nᵗʰ root of product of values
+(x₁ * x₂ * ... * xₙ) ^ (1 / n)
+```
+
+```cs:no-line-numbers
+// Geometric mean of matrix under the mask
+Response = GeometricMean(f(x + i, y + j))
+
+// Example
+f(x + i, y + j) = | 10  20  30 |
+                  | 10  50  90 |
+                  | 50  50  70 |
+
+GeometricMean(10, 20, 30, 10, 50, 90, 50, 50, 70)
+(10 * 20 * 30 * 10 * 50 * 90 * 50 * 50 * 70) ^ (1 / 9)
+```
+
+### Harmonic Mean Filter
+
+Takes the harmonic mean of values under the mask.
+
+```cs:no-line-numbers
+// Harmonic mean
+n / (1/x₁ + 1/x₂ + ... + 1/xₙ)
+```
+
+```cs:no-line-numbers
+// Geometric mean of matrix under the mask
+Response = GeometricMean(f(x + i, y + j))
+
+// Example
+f(x + i, y + j) = | 10  20  30 |
+                  | 10  50  90 |
+                  | 50  50  70 |
+
+GeometricMean(10, 20, 30, 10, 50, 90, 50, 50, 70)
+9 / (1/10 + 1/20 + 1/30 + 1/10 + 1/50 + 1/90 + 1/50 + 1/50 + 1/70)
+```
+
 ## Sharpening Spatial Filter
 
 - Used in sharpening, highlighting, and edge detection. This process highlights the sudden changes in `H/S/V` which usually happens at the edges of an object.
@@ -329,9 +373,3 @@ H(u, v) = 1 - e ^ { -D²(u, v) / (2 * D₀²) }
 ## Summary of Frequency Filters
 
 ![HPF](https://player.slideplayer.com/90/14547361/slides/slide_18.jpg)
-
-## Constrained Least Square Filter
-
-- Image restoration technique.
-
-// TODO: resume from Wiener filter -> CLSF
