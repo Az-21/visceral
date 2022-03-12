@@ -91,7 +91,7 @@ In human visual perception, the eyes act as the sensor or camera, neurons act as
 - The sensing array then moves a certain distance, giving the array new set of inputs. Doing this sweep along the entire area gives us an image matrix `l x w`.
 
 ::: tip NOTE
-This process an analog voltage signal, which must then be sampled and quantized to produce a digital image.
+This process produces an analog voltage signal, which must then be sampled and quantized to produce a digital image.
 :::
 
 ## Image Sampling and Quantization
@@ -177,7 +177,7 @@ H(af + bg) = aH(f) + bH(g)
 #### Important info
 
 - n-bit depth of an image corresponds to 2<sup>k</sup> colors/levels.
-- Packet with [start | data | end] increase the n-bit depth by `start + end`, usually 2.
+- Packet with `[start | data | end]` increase the n-bit depth by `start + end`, usually 2.
 - Baud rate is basically the speed of scan.
 - For good quality scans, a minimum of `2 pixels/cycles` sampling resolution is required.
 - `1 inch` = `2.54 cm`
