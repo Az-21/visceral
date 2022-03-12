@@ -161,7 +161,9 @@ distCh = bwdist(img, "chessboard")
 
 ## Linear and Non-Linear Operations
 
-#### `H(af + bg) = aH(f) + bH(g)`
+```:no-line-numbers
+H(af + bg) = aH(f) + bH(g)
+```
 
 - `H` ⟶ operation
 - `a` and `b` ⟶ scalers
@@ -182,16 +184,24 @@ distCh = bwdist(img, "chessboard")
 
 #### 1. Memory
 
-##### `bits = width x height x k`
+```:no-line-numbers
+bits = width x height x k
+```
 
 #### 2. Scan time
 
-##### `time = bits / baud rate`
+```:no-line-numbers
+time = bits / baud rate
+```
 
 #### 3. Sampling resolution
 
-##### `res = (cycle / mm) * (pixel / cycle)`
+```:no-line-numbers
+res = (cycle / mm) * (pixel / cycle)
+```
 
 ## Numerical on Image Formation
 
-##### `height of object / eye-to-object distance = height of image / eye-to-retina distance`
+```:no-line-numbers
+height of object / eye-to-object distance = height of image / eye-to-retina distance
+```
