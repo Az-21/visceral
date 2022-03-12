@@ -185,7 +185,7 @@ For example, in a `uint8` image, data is bound by `[0, 255]`
 - `100 - 150 = -50` ⟶ underflow ⟶ reset to `min(uint8) = 0`
   :::
 
-### Histogram Equalization <Badge type="danger" text="Histogram Transform" vertical="middle" />
+### Histogram Stretching <Badge type="danger" text="Histogram Transform" vertical="middle" />
 
 Stretch the histogram to increase the contrast of the image.
 
@@ -201,7 +201,7 @@ s = ((r - minR) / (maxR - minR)) * maxPixel
 s = ((r - 10) / (60 - 10)) * 255
 ```
 
-#### Histogram Equalization <Badge text="CODE" vertical="middle" />
+#### Histogram Stretching <Badge text="CODE" vertical="middle" />
 
 ```matlab
 [eq, T] = histeq(gray);
