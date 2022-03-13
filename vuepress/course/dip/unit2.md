@@ -211,7 +211,7 @@ Stretch the histogram to increase the contrast of the image.
 - Map maximum value in histogram to `255` i.e. `maxPixel`
 
 ```cs:no-line-numbers
-// Histogram equalization
+// Histogram stretching/compressing
 s = ((maxS - minS) / (maxR - minR)) * (r - minR) + minS
 s = (Δs / Δr) * (r - minR) + minS
 
