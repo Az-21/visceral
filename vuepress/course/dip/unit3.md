@@ -308,7 +308,7 @@ g(x, y) * (-1)^(x + y)
 D(u, v) = sqrt[ (u - M / 2)^2 + (v - N / 2)^2 ]
 ```
 
-### Notes on Usage of FFrequency Filters
+### Notes on Usage of Frequency Filters
 
 1. Ideal filters blur the edges of image.
 2. Butterworth filters provide a smooth gradient at low sharpness `n` resulting in well defined edges.
