@@ -2,7 +2,7 @@
 
 ## Spatial Domain
 
-Spatial domain processes involve direct pixel manipulation of an image; it can be denoted by
+Spatial domain processes involve direct pixel manipulation (point processing) of an image; it can be denoted by
 
 ```:no-line-numbers
 g(x, y) = T[ f(x, y) ]
@@ -104,6 +104,17 @@ This technique makes dark regions darker, and light regions lighter.
 
 `r1` `r2` `s1` `s2` are selected as per preference. This results in three distinct regions where different transform slopes apply.
 
+```cs:no-line-numbers
+// Output equation
+s = | m1 * r               ->  0  ≤ r < s1
+    | m2 * (r - r1) + s1   ->  s1 ≤ r < s2
+    | m3 * (r - r2) + s2   ->  s2 ≤ r ≤ pixelMax
+```
+
+#### Solved Example <Badge text="Sample Problem" verticle="middle" />
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/YJIgFMoC_yg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ### Thresholding
 
 - In contrast stretching, if we make `r1 = r2`, `s1 = 0`, and `s2 = maxPixel`, we can create a threshold image based on the `threshold = r1 = r2`.
@@ -196,20 +207,35 @@ Stretch the histogram to increase the contrast of the image.
 
 ```cs:no-line-numbers
 // Histogram equalization
-s = ((r - minR) / (maxR - minR)) * maxPixel
+s = ((maxS - minS) / (maxR - minR)) * (r - minR) + minS
+s = (Δs / Δr) * (r - minR) + minS
 
 // For uint8 image
 // Stretch histogram in [10, 60] to occupy entire region [0, 255]
-s = ((r - 10) / (60 - 10)) * 255
+s = ((255 - 0) / (60 - 10)) * (r - 10) + 0
 ```
 
-#### Histogram Stretching <Badge text="CODE" vertical="middle" />
+#### Solved Example <Badge text="Sample Problem" verticle="middle" />
 
-```matlab
-[eq, T] = histeq(gray);
-imshow(eq); % Equalized image
-imhist(eq); % Equalized histogram
-```
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5z6cd-yah6s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+### Histogram Equalization
+
+- Although histogram stretching improves contrast, simply shuffling about the order of levels does not help much.
+- To counter this, the histogram is then equalized/normalized/leveled using concept of cumulative sum.
+
+#### Solved Example <Badge text="Sample Problem" verticle="middle" />
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Grjn7zwzUjI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+### Histogram Specification
+
+- Although histogram equalization balances out the gray level, it has only one standardized out; no flexibility.
+- Histogram specification adapts the balance one histogram based on an external **histogram reference**.
+
+#### Solved Example <Badge text="Sample Problem" verticle="middle" />
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/_0lnvU6lquQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ## Mathematical Operations
 
@@ -298,6 +324,7 @@ result = imcomplement(image);   % also works
 ## Color Image Enhancement <Badge text="CODE" vertical="middle" />
 
 #### RGB Colorspace
+
 ```matlab
 % Extract RGB components
 rChannel = image(:, :, 1);  % red
@@ -309,6 +336,7 @@ recombinedImage = cat(3, rChannel, gChannel, bChannel);
 ```
 
 #### HSV Colorspace
+
 ```matlab
 % Convert to HSV colorspace
 hsvImage = rgb2hsv(image);
