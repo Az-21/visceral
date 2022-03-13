@@ -18,7 +18,7 @@ In the following formulae
 - `s` ⟶ output pixel value
 - `c` ⟶ contrast
 
-### Image Negative <Badge type="danger" text="Basic Transform" vertical="middle" />
+### Image Negative
 
 Inverts the gray levels.
 
@@ -30,7 +30,7 @@ s = maxPixel - r
 s = 255 - r
 ```
 
-### Log Transform <Badge type="danger" text="Basic Transform" vertical="middle" />
+### Log Transform
 
 Spread/compresses the gray levels.
 
@@ -39,7 +39,7 @@ Spread/compresses the gray levels.
 s = c · log(1 + r)
 ```
 
-### Power Law Transform <Badge type="danger" text="Basic Transform" vertical="middle" />
+### Power Law Transform
 
 Selectively increases/decreases the intensity of either dark/light pixels with minimum effect on the counterpart light/dark pixels.
 
@@ -52,7 +52,7 @@ s = c · r ^ gamma
 - `gamma = 1` ⟶ no change if `c == 1`
 - `gamma < 1` ⟶ darkens image
 
-### Optimal Contrast <Badge type="danger" text="Basic Transform" vertical="middle" />
+### Optimal Contrast
 
 - The basic idea behind optimal contrast is to **normalize** the log and power law transforms to prevent overflow of values.
 - This can be achieved by scaling up/down the entire image based on the fact that a `maxPixel` before transform should be same as `maxPixel` after the transform.
