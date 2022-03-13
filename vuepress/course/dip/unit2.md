@@ -138,6 +138,11 @@ image = image / maxPixel
 image = image / 255
 ```
 
+### Adaptive Thresholding
+
+- Instead of globally applying the thresholding to the entire image at once, we can split the image into local sub-images/sub-matrices.
+- Applying separate thresholding to separate regions will produce a better overall output in case of images with uneven illumination levels (one region is blown out, other is dim).
+
 ### Gray Level Slicing
 
 Highlight specific range `[A, B]` of the graylevels.
