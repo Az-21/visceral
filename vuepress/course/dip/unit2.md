@@ -160,7 +160,7 @@ Highlight the contribution of specific or a range of bit planes.
 ![Bit planes](https://bitplaneslicing.files.wordpress.com/2012/02/bit-plane.png)
 
 - The most significant planes are the top 50% layers which contain visually significant data.
-- It is useful in image compression and filtering out most significant layers from an image.
+- It is useful in image compression (**reducing number of gray levels**) and filtering out most significant layers from an image.
 
 ![Bit plane slicing](https://i2.wp.com/theailearner.com/wp-content/uploads/2019/01/bit-plane-slicing.png?w=662&ssl=1)
 
