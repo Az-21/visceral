@@ -238,7 +238,7 @@ The mathematically derived Laplacian filter gives negative weightage to the cent
 sharpImage(x, y) = originalImage(x, y) - blurredImage(x, y)
 ```
 
-#### Example Problem
+#### Solved Example <Badge text="Sample Problem" verticle="middle" />
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Hutnurzr59o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 

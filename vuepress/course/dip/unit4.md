@@ -345,7 +345,7 @@ Mask = | -1  -1  -1  |
 B(A) = A - (A ⊖ B)
 ```
 
-#### Example Problem
+#### Solved Example <Badge text="Sample Problem" verticle="middle" />
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/dD9zwP6-37c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
@@ -363,7 +363,7 @@ B = | 0  1  0 |
 
 - This process is repeated until `Xₖ == Xₖ₋₁`
 
-#### Example Problem
+#### Solved Example <Badge text="Sample Problem" verticle="middle" />
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/aoGi6mieTQk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
@@ -381,7 +381,7 @@ B = | 1  1  1 |
 
 - This process is repeated until `Xₖ == Xₖ₋₁`
 
-#### Example Problem
+#### Solved Example <Badge text="Sample Problem" verticle="middle" />
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/hMIrQdX4BkE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
@@ -403,7 +403,7 @@ B1 = | 1  x  x |
 
 - This process is repeated until `Xₖ == Xₖ₋₁`
 
-#### Example Problem
+#### Solved Example <Badge text="Sample Problem" verticle="middle" />
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/tEHNkKs9iZE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
@@ -429,7 +429,7 @@ B1 = | 1  x  0 |
   - If thickening, replace center by `1`
 - This process is exhaustive. Only one iteration is performed.
 
-#### Example Problem
+#### Solved Example <Badge text="Sample Problem" verticle="middle" />
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/gGCWu6qR350" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
