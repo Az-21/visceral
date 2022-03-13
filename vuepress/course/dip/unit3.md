@@ -108,11 +108,9 @@ Minimum(10, 20, 30, 10, 50, 90, 50, 50, 70) = 10
 Takes the geometric mean of values under the mask.
 
 ```cs:no-line-numbers
-// Geometric mean ⟶ nᵗʰ root of product of values
+// Geometric mean formula ⟶ nᵗʰ root of product of values
 (x₁ * x₂ * ... * xₙ) ^ (1 / n)
-```
 
-```cs:no-line-numbers
 // Geometric mean of matrix under the mask
 Response = GeometricMean(f(x + i, y + j))
 
@@ -130,20 +128,18 @@ GeometricMean(10, 20, 30, 10, 50, 90, 50, 50, 70)
 Takes the harmonic mean of values under the mask.
 
 ```cs:no-line-numbers
-// Harmonic mean
+// Harmonic mean formula
 n / (1/x₁ + 1/x₂ + ... + 1/xₙ)
-```
 
-```cs:no-line-numbers
-// Geometric mean of matrix under the mask
-Response = GeometricMean(f(x + i, y + j))
+// Harmonic mean of matrix under the mask
+Response = HarmonicMean(f(x + i, y + j))
 
 // Example
 f(x + i, y + j) = | 10  20  30 |
                   | 10  50  90 |
                   | 50  50  70 |
 
-GeometricMean(10, 20, 30, 10, 50, 90, 50, 50, 70)
+HarmonicMean(10, 20, 30, 10, 50, 90, 50, 50, 70)
 9 / (1/10 + 1/20 + 1/30 + 1/10 + 1/50 + 1/90 + 1/50 + 1/50 + 1/70)
 ```
 
