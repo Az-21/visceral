@@ -94,7 +94,9 @@ maxPixel = 255 ^ 2.0 = 65025        // Too high
 maxPixel = c * maxPixel = 255       // Normalized
 ```
 
-### Contrast Stretching <Badge type="danger" text="Piecewise Transform" vertical="middle" />
+## Piecewise Transform
+
+### Contrast Stretching
 
 This technique makes dark regions darker, and light regions lighter.
 
@@ -102,7 +104,7 @@ This technique makes dark regions darker, and light regions lighter.
 
 `r1` `r2` `s1` `s2` are selected as per preference. This results in three distinct regions where different transform slopes apply.
 
-### Thresholding <Badge type="danger" text="Piecewise Transform" vertical="middle" />
+### Thresholding
 
 - In contrast stretching, if we make `r1 = r2`, `s1 = 0`, and `s2 = maxPixel`, we can create a threshold image based on the `threshold = r1 = r2`.
 
@@ -125,7 +127,7 @@ image = image / maxPixel
 image = image / 255
 ```
 
-### Gray Level Slicing <Badge type="danger" text="Piecewise Transform" vertical="middle" />
+### Gray Level Slicing
 
 Highlight specific range `[A, B]` of the graylevels.
 
@@ -135,7 +137,7 @@ Highlight specific range `[A, B]` of the graylevels.
   1. Reduce graylevels outside of the range `[A, B]`.
   2. Preserve graylevels outside specified range `[A, B]` i.e. do not change them.
 
-### Bit Plane Slicing <Badge type="danger" text="Piecewise Transform" vertical="middle" />
+### Bit Plane Slicing
 
 Highlight the contribution of specific or a range of bit planes.
 
@@ -164,7 +166,7 @@ layer3 = mod(floor(image / 2^2), 2);    % most significant
 recombinedImage = (2* (2 * (2 * layer3) + layer2) + layer1);
 ```
 
-### Histogram Sliding <Badge type="danger" text="Histogram Transform" vertical="middle" />
+### Histogram Sliding
 
 Complete histogram is shifted right or left. This operation affects brightness.
 
@@ -185,7 +187,7 @@ For example, in a `uint8` image, data is bound by `[0, 255]`
 - `100 - 150 = -50` ⟶ underflow ⟶ reset to `min(uint8) = 0`
   :::
 
-### Histogram Stretching <Badge type="danger" text="Histogram Transform" vertical="middle" />
+### Histogram Stretching
 
 Stretch the histogram to increase the contrast of the image.
 
@@ -208,6 +210,8 @@ s = ((r - 10) / (60 - 10)) * 255
 imshow(eq); % Equalized image
 imhist(eq); % Equalized histogram
 ```
+
+## Mathematical Operations
 
 ### Arithmetic Operations <Badge text="CODE" vertical="middle" />
 
@@ -275,7 +279,7 @@ result = ~image;                % !image in other languages
 result = imcomplement(image);   % also works
 ```
 
-### Pseudo Color
+## Pseudo Color
 
 - Technique used to display images in color which were originally recorded in the visible or non-visible parts of the electromagnetic spectrum.
 - Uses of pseudo color in visible spectrum
@@ -291,7 +295,7 @@ result = imcomplement(image);   % also works
 
 ![Non-visible Pseudo Color](https://upload.wikimedia.org/wikipedia/commons/2/25/ParowozIR.jpg)
 
-### Color Image Enhancement <Badge text="CODE" vertical="middle" />
+## Color Image Enhancement <Badge text="CODE" vertical="middle" />
 
 #### RGB Colorspace
 ```matlab
