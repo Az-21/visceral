@@ -229,6 +229,19 @@ In context of image processing, we want to give more weightage to the center pix
 The mathematically derived Laplacian filter gives negative weightage to the center pixel, which is undesired. Therefore we multiply the mask by `-1` to make it more suitable for digital image processing.
 :::
 
+### Highboost Filtering
+
+- Sharpening by subtracting blurred image from original image.
+
+```cs:no-line-numbers
+// Highboost filter
+sharpImage(x, y) = originalImage(x, y) - blurredImage(x, y)
+```
+
+#### Example Problem
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Hutnurzr59o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## Image Enhancement in Frequency Domain
 
 - Spatial domain (input) ⟶ frequency domain (processing) ⟶ spatial domain (output).
