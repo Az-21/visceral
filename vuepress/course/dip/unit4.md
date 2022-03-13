@@ -433,6 +433,40 @@ B1 = | 1  x  0 |
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/gGCWu6qR350" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+## Homomorphic Filtering
+
+- Homomorphic filtering simultaneously normalizes the brightness and increases the contrast.
+
+#### Uses
+
+1. Correcting non-uniform illumination
+2. Removing multiplicative noise
+3. Appearance of grayscale image
+
+#### Process
+
+```cs:no-line-numbers
+// Split image into illumination and reflectance
+f(x, y) = i(x, y) x r(x, y)
+
+// However, product of Fourier transform is not separable
+F[f(x, y)] ≠ F[i(x, y)] x F[r(x, y)]
+
+// To overcome, this problem, we preprocess the signal by taking its log
+ln[f(x, y)] = ln[i(x, y)] + ln[r(x, y)]
+
+// Fourier transform
+F[ln[f(x, y)]] = F[ln[i(x, y)]] + F[ln[r(x, y)]]
+```
+
+- Illumination is the primary factor which provides image its dynamic range and it varies slowly.
+- Reflectance is the detail of object edges and varies rapidly.
+- These characteristics led to association of `F[f(x, y)]`'s
+  - Low frequencies with `F[i(x, y)]`
+  - High frequencies with `F[r(x, y)]`
+- By applying separate filtering functions `Hi` and `Hr` to `F[ln[i(x, y)]]` and `F[ln[r(x, y)]]`, we can achieve the primary function of homomorphic fiter.
+  ![Block](https://blogs.mathworks.com/images/steve/2013/HF_Block_Diagram_2.png)
+
 ## Image Restoration
 
 - Process of removal of degradation in an image.
