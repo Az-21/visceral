@@ -19,6 +19,7 @@ export default defineUserConfig<DefaultThemeOptions>({
   },
   plugins: [
     ["@vuepress/plugin-shiki", { theme: "material-darker" }],
+    ["vuepress-plugin-chart"],
     [
       "vuepress-plugin-giscus",
       {
