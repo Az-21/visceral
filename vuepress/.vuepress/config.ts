@@ -18,8 +18,26 @@ export default defineUserConfig<DefaultThemeOptions>({
     sidebar: sidebar.en,
   },
   plugins: [
-    ["@vuepress/plugin-shiki", { theme: "material-darker" }],
+    // Syntax Highlighter
+    [
+      "@vuepress/plugin-shiki",
+      {
+        theme: "material-darker",
+      },
+    ],
+
+    // Chart.js
     ["vuepress-plugin-chart"],
+
+    // Markdown extended
+    [
+      "@renovamen/vuepress-plugin-md-plus",
+      {
+        all: true,
+      },
+    ],
+
+    // GitHub Discussions via Giscus
     [
       "vuepress-plugin-giscus",
       {
