@@ -180,3 +180,5 @@ A = | x_λ1    x_λ2    ...   x_λn |
 - Two dimensional discrete fourier transform
 - Discrete cosine transform
 - Discrete sine transform
+
+<Giscus :theme="theme" :lang="lang" :reactionsEnabled="reactionsEnabled" />

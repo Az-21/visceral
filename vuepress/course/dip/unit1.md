@@ -205,3 +205,5 @@ res = (cycle / mm) * (pixel / cycle)
 ```:no-line-numbers
 height of object / eye-to-object distance = height of image / eye-to-retina distance
 ```
+
+<Giscus :theme="theme" :lang="lang" :reactionsEnabled="reactionsEnabled" />

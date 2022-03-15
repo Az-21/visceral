@@ -37,3 +37,5 @@ Detection of discontinuities, edge linking and boundary detection, thresholding 
 > Image Transforms
 
 Two-dimensional orthogonal & unitary transforms, properties of unitary transforms, two dimensional discrete fourier transform, discrete cosine transform, sine transform, Hadamard transform, Haar transform, KL transform.
+
+<Giscus :theme="theme" :lang="lang" :reactionsEnabled="reactionsEnabled" />
