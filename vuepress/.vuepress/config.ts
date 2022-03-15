@@ -44,6 +44,12 @@ export default defineUserConfig<DefaultThemeOptions>({
     ],
 
     // KaTeX
-    ["@renovamen/vuepress-plugin-katex"],
+    [
+      "@renovamen/vuepress-plugin-katex",
+      {
+        throwOnError: false,
+        strict: true,
+      },
+    ],
   ],
 });
