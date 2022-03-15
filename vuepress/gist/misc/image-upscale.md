@@ -69,3 +69,5 @@ pip cache purge
 pip install torch -f https://download.pytorch.org/whl/torch_stable.html
 python setup.py develop
 ```
+
+<Giscus :theme="theme" :lang="lang" :reactionsEnabled="reactionsEnabled" />

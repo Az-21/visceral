@@ -1,6 +1,6 @@
 # SvelteKit Setup
 
-SvelteKit setup with support for TailwindCSS and Vercel.
+SvelteKit setup with support for TailwindCSS and Vercel/Netlift/Cloudflare.
 
 ## Create SvelteKit Project
 
@@ -21,9 +21,9 @@ npm install
 npm run dev -- --open
 ```
 
----
-
-### Credits and Sources
+## Credits and Sources
 
 - [SvelteKit Docs](https://kit.svelte.dev/docs)
 - [Tailwind Addon](https://github.com/svelte-add/tailwindcss)
+
+<Giscus :theme="theme" :lang="lang" :reactionsEnabled="reactionsEnabled" />
