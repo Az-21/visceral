@@ -60,15 +60,15 @@ In human visual perception, the eyes act as the sensor or camera, neurons act as
 
 ![Eye Anatomy](https://images.ctfassets.net/u4vv676b8z52/3EEHqBUTHts5Cx52uy2UP7/ab761a14fd65b921062b8691b54f3f80/eye-anatomy-700x635.jpg)
 
-- The human eye is a slightly asymmetrical sphere with an average diameter of the length of `20 mm` to `25 mm`. It has a volume of about `6.5 cc`.
+- The human eye is a slightly asymmetrical sphere with an average diameter of the length of $20 \ mm$ to $25 \ mm$. It has a volume of about $6.5 \ cm^3$.
 
 - Light enters the eye through a small hole called the pupil, a black looking aperture having the quality of contraction of eye when exposed to bright light and is focused on the retina which is like a camera film.
 
 - The lens, iris, and cornea are nourished by clear fluid, know as anterior chamber. Balance of aqueous production and absorption controls pressure within the eye.
 
-- Cones in eye number between 6 to 7 million which are highly sensitive to colors. Cones helps us visualize color.
+- Cones in eye number between $6$ to $7$ million which are highly sensitive to colors. Cones helps us visualize color.
 
-- Rods in eye number between 75 to 150 million which sensitive to low levels of illumination. Rods helps us visualize light intensity i.e. grayscale.
+- Rods in eye number between $75$ to $150$ million which sensitive to low levels of illumination. Rods helps us visualize light intensity i.e. grayscale.
 
 #### Image Formation
 
@@ -76,7 +76,7 @@ In human visual perception, the eyes act as the sensor or camera, neurons act as
 
 - The lens of the eye focuses light on the photoreceptive cells of the retina which detects the photons of light and responds by producing neural impulses.
 
-- The distance between the lens and the retina is about `17 mm` and the focal length is approximately `14 mm` to `17 mm`.
+- The distance between the lens and the retina is about $17 \ mm$ and the focal length is approximately $14 \ mm$ to $17 \ mm$.
 
 ## Image Sensing and Acquisition
 
@@ -84,11 +84,11 @@ In human visual perception, the eyes act as the sensor or camera, neurons act as
 
 - Incoming energy is transformed into a voltage by the combination of input electrical power and sensor material that is responsive to the particular type of energy being detected. Example, camera detects wavelength intensity in the visible spectrum.
 
-- An array of these sensors measures energy across length `l` and width `dw`.
+- An array of these sensors measures energy across length $l$ and width $dw$.
 
 ![Motion](https://t1.daumcdn.net/cfile/tistory/25457F35586103D233)
 
-- The sensing array then moves a certain distance, giving the array new set of inputs. Doing this sweep along the entire area gives us an image matrix `l x w`.
+- The sensing array then moves a certain distance, giving the array new set of inputs. Doing this sweep along the entire area gives us an image matrix $l \times w$.
 
 ::: tip NOTE
 This process produces an analog voltage signal, which must then be sampled and quantized to produce a digital image.
@@ -100,7 +100,7 @@ This process produces an analog voltage signal, which must then be sampled and q
 
 #### Sampling
 
-- Continuous-time analog signal is sampled by measuring its amplitude at a discrete instants spaced uniformly in time `T`.
+- Continuous-time analog signal is sampled by measuring its amplitude at a discrete instants spaced uniformly in time $T$.
 
 - As long as the sampling of the analog signal is taken with a sufficiently high frequency (higher than the minimum Nyquist rate of twice the signal largest frequency), there is no loss in information as a result of taking discrete samples.
 
@@ -108,7 +108,7 @@ This process produces an analog voltage signal, which must then be sampled and q
 
 - The sample values have to be quantized to a finite number of levels, and each value can then be represented by a string of bits.
 
-- For example, color channels in `JPEG` images are usually quantized in `256` levels of intensity.
+- For example, color channels in `JPEG` images are usually quantized in $256$ levels of intensity.
 
 #### Encoding
 
@@ -118,32 +118,32 @@ This process produces an analog voltage signal, which must then be sampled and q
 
 #### Neighbors
 
-- **N<sub>4</sub>** ⟶ horizontal + vertical neighbors.
-- **N<sub>D</sub>** ⟶ diagonal neighbors.
-- **N<sub>8</sub>** ⟶ N<sub>4</sub> ∪ N<sub>D</sub>.
+- $N_4 \longrightarrow$ horizontal + vertical neighbors.
+- $N_D \longrightarrow$ diagonal neighbors.
+- $N_8 \longrightarrow$ $N_4 \cup N_D$.
 
 #### Path
 
-- **N<sub>4</sub> path** ⟶ minimum distance path using N<sub>4</sub> movement.
-- **N<sub>8</sub> path** ⟶ minimum distance path using N<sub>8</sub> movement.
-- **M path** ⟶ N<sub>4</sub> movement on priority; N<sub>8</sub> movement only if N<sub>4</sub> movement is not possible.
-  - If N<sub>4</sub> path exists, M path equals N<sub>4</sub> path by definition.
+- $N_4$ Path $\longrightarrow$ minimum distance path using $N_4$ movement.
+- $N_8$ Path $\longrightarrow$ minimum distance path using $N_8$ movement.
+- $M$ Path $\longrightarrow$ ⟶ N<sub>4</sub> movement on priority; $N_8$ movement only if $N_4$ movement is not possible.
+  - If $N_4$ path exists, $M$ path equals $N_4$ path by definition.
 
 #### Distance
 
 - **Euclidean distance**
 
   - Straight line distance between two points.
-  - d<sub>eu</sub> = √(Δx<sup>2</sup> + Δy<sup>2</sup>)
+  - $d_{eu} = \sqrt{\Delta x^2 + \Delta y^2}$
 
 - **Cityblock distance**
 
-  - N<sub>4</sub> path distance
-  - d<sub>ci</sub> = Σ | Δx | + | Δy | + | Δz |
+  - $N_4$ path distance
+  - $d_{ci} = \Sigma \lparen \vert \Delta x \vert + \vert \Delta y \vert \rparen$
 
 - **Chessboard distance**
   - Longest distance along **one** axis
-  - d<sub>ch</sub> = max ( | Δx | , | Δy | , | Δz | )
+  - $d_{ch} = \max \lparen \vert \Delta x \vert, \vert \Delta y \vert \rparen$
 
 #### Distance <Badge text="CODE" vertical="middle"/>
 
@@ -176,34 +176,27 @@ H(af + bg) = aH(f) + bH(g)
 
 #### Important info
 
-- n-bit depth of an image corresponds to 2<sup>k</sup> colors/levels.
-- Packet with `[start | data | end]` increase the n-bit depth by `start + end`, usually 2.
+- n-bit depth of an image corresponds to $2^k$ colors/levels.
+- Packet with `[start | data | end]` increase the n-bit depth by `start + end`, usually $2$.
 - Baud rate is basically the speed of scan.
-- For good quality scans, a minimum of `2 pixels/cycles` sampling resolution is required.
-- `1 inch` = `2.54 cm`
+- For good quality scans, a minimum of $2 \ \frac{\text{pixels}}{\text{cycles}}$ sampling resolution is required.
+- $1 \ in$ = $2.54 \ cm$
 
 #### 1. Memory
 
-```:no-line-numbers
-bits = width x height x k
-```
+$\text{bits} = \text{Height} \times \text{Width} \times \text{Channels} \times \text{Bit-depth}$
 
 #### 2. Scan time
 
-```:no-line-numbers
-time = bits / baud rate
-```
+$\text{Time} = \dfrac{\text{bits}}{\text{Baud Rate}}$
 
 #### 3. Sampling resolution
 
-```:no-line-numbers
-res = (cycle / mm) * (pixel / cycle)
-```
+$\text{Resolution} = \dfrac{\text{Cycle}}{mm} \times \dfrac{\text{Pixels}}{\text{Cycle}}$
+
 
 ## Numerical on Image Formation
 
-```:no-line-numbers
-height of object / eye-to-object distance = height of image / eye-to-retina distance
-```
+$\dfrac{\text{Height of Object}}{\text{Lens to Object Distance}} = \dfrac{\text{Height of Image}}{\text{Lens to Retina Distance}}$
 
 <Giscus :theme="theme" :lang="lang" :reactionsEnabled="reactionsEnabled" />
