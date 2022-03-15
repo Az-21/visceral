@@ -17,5 +17,21 @@ export default defineUserConfig<DefaultThemeOptions>({
     logo: "https://vuejs.org/images/logo.png",
     sidebar: sidebar.en,
   },
-  plugins: [["@vuepress/plugin-shiki", { theme: "material-darker" }]],
+  plugins: [
+    ["@vuepress/plugin-shiki", { theme: "material-darker" }],
+    [
+      "vuepress-plugin-giscus",
+      {
+        repo: "Az-21/visceral",
+        repoId: "R_kgDOG9uDLA ",
+        category: "General",
+        categoryId: "DIC_kwDOG9uDLM4COGxh",
+        mapping: "pathname",
+        reactionsEnabled: "1",
+        theme: "preferred_color_scheme",
+        lang: "auto",
+        crossorigin: "anonymous",
+      },
+    ],
+  ],
 });
