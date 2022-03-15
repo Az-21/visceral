@@ -4,8 +4,8 @@
 
 - Process of partitioning digital image into multiple region of interests (ROIs).
 - Image segmentation approaches
-  1. Similarity principle (region approach) ⟶ group similar pixels to extract a coherent region
-  2. Discontinuity principle (boundary approach) ⟶ extract regions that differ in `H/S/V`
+  1. Similarity principle (region approach) $\longrightarrow$ group similar pixels to extract a coherent region
+  2. Discontinuity principle (boundary approach) $\longrightarrow$ extract regions that differ in `H/S/V`
 
 ### Characteristics of Segmentation
 
@@ -36,9 +36,9 @@ Rᵢ ∩ Rⱼ = ɸ
 ## Detection of Discontinuities
 
 - Types of gray level discontinuities
-  1. Point ⟶ isolated point
-  2. Line ⟶ straight line
-  3. Edge ⟶ irregular outline of an object
+  1. Point $\longrightarrow$ isolated point
+  2. Line $\longrightarrow$ straight line
+  3. Edge $\longrightarrow$ irregular outline of an object
 
 ### Point Detection
 
@@ -91,32 +91,32 @@ Mask = |  2  -1  -1  |
 - An edge is a set of **connected pixels** which lie on the boundary of an object (boundary of two different).
 - Edge corresponds to the sharp discontinuities/change in `H/S/V` and therefore can be used in segmentation.
 - Edge can extracted by computing the derivative of an image
-  - Magnitude of derivative ⟶ contrast of edge
-  - Direction of derivative ⟶ edge orientation (angle)
+  - Magnitude of derivative $\longrightarrow$ contrast of edge
+  - Direction of derivative $\longrightarrow$ edge orientation (angle)
 
 #### Types of Edges
 
-- Step edge ⟶ abrupt change in `H/S/V`
-- Ramp edge ⟶ gradual change in `H/S/V`
-- Spike edge ⟶ abrupt change in `H/S/V` and then back to original `H/S/V`
-- Roof edge ⟶ gradual change in `H/S/V` and then gradually back to original `H/S/V`
+- Step edge $\longrightarrow$ abrupt change in `H/S/V`
+- Ramp edge $\longrightarrow$ gradual change in `H/S/V`
+- Spike edge $\longrightarrow$ abrupt change in `H/S/V` and then back to original `H/S/V`
+- Roof edge $\longrightarrow$ gradual change in `H/S/V` and then gradually back to original `H/S/V`
 
 #### Stages in Edge Detection
 
 1. Start
 2. Input image
-3. Filtering ⟶ some preprocessing to aid in edge detection (smoothening, reduce noise)
-4. Differentiation ⟶ first or second order derivative and direction if `atan(y / x)`
-5. Localization ⟶ identify the edge location. Also involves edge thinning and edge linking.
+3. Filtering $\longrightarrow$ some preprocessing to aid in edge detection (smoothening, reduce noise)
+4. Differentiation $\longrightarrow$ first or second order derivative and direction if `atan(y / x)`
+5. Localization $\longrightarrow$ identify the edge location. Also involves edge thinning and edge linking.
 6. Display
 7. End
 
 #### Edge Detection Approaches
 
-- Derivative ⟶ spatial filters
-- Template matching ⟶ matches region which resemble template
-- Gaussian derivatives ⟶ best for real time processing
-- Pattern fit ⟶ topographical surface generation
+- Derivative $\longrightarrow$ spatial filters
+- Template matching $\longrightarrow$ matches region which resemble template
+- Gaussian derivatives $\longrightarrow$ best for real time processing
+- Pattern fit $\longrightarrow$ topographical surface generation
 
 ## Edge Detection Techniques
 
@@ -130,8 +130,8 @@ M = | Gx | + | Gy |
 ϕ = tan⁻(Gy / Gx)
 
 // Edge localization
-| 1   ⟶   M ≥ Threshold
-| 0   ⟶   M < Threshold
+| 1   $\longrightarrow$   M ≥ Threshold
+| 0   $\longrightarrow$   M < Threshold
 ```
 
 #### Robert Operator
@@ -330,8 +330,8 @@ Mask = | -1  -1  -1  |
 
 ![Topography](https://slidetodoc.com/presentation_image/bf70edf1da14a524c54262f0853e074a/image-4.jpg)
 
-- Catchment basin (lake) ⟶ collection of points where water will certainly fall to a **unique** regional minima.
-- Watershed lines (boundary of lake) ⟶ collection of points where water is equally likely to fall to **more than one** regional minima.
+- Catchment basin (lake) $\longrightarrow$ collection of points where water will certainly fall to a **unique** regional minima.
+- Watershed lines (boundary of lake) $\longrightarrow$ collection of points where water is equally likely to fall to **more than one** regional minima.
 - If we can find the watershed lines, we can determine the edges. Here's a slice from the 3D plane we generated.
 
 ![Slice](https://www.researchgate.net/profile/Kostas-Haris/publication/12685308/figure/fig7/AS:359110026514447@1462629910680/An-example-of-regional-minima-catchment-basins-and-watersheds-produced-by-the-watershed.png)
@@ -482,7 +482,7 @@ F[ln[f(x, y)]] = F[ln[i(x, y)]] + F[ln[r(x, y)]]
 
 ![Model](https://images.slideplayer.com/26/8267441/slides/slide_5.jpg)
 
-Original Image ⟶ Degrade Function ⟶ Degraded Image ⟶ Add Noise ⟶ Degrade Function ⟶ Original Image Estimate
+Original Image $\longrightarrow$ Degrade Function $\longrightarrow$ Degraded Image $\longrightarrow$ Add Noise $\longrightarrow$ Degrade Function $\longrightarrow$ Original Image Estimate
 
 #### Restoration Techniques
 

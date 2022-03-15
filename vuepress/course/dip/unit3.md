@@ -3,24 +3,21 @@
 ## Spatial Filtering
 
 - Image processing technique to reject certain frequency components.
-- Involves usage of `n x n` filter mask which traverses through the image pixels.
-- Advantage over frequency filters ⟶ can also be used in non-linear domain.
+- Involves usage of $n \times n$ filter mask which traverses through the image pixels.
+- Advantage over frequency filters $\longrightarrow$ can also be used in non-linear domain.
 - Types
-  - Smoothening spatial filter (low pass filter)
+  - Smoothening spatial filter
   - Sharpening spatial filter
 
 ### Response of Linear Filter
 
 ![Response](https://www.dynamsoft.com/blog/assets/images/uploads/2019/07/figure-231.png)
 
-```cs:no-line-numbers
-// Response is output of mask at selected region
-Response = Σ w(i, j) * f(x + i, y + j)
-```
+$\text{Response} = \Sigma \lbrack w(i, j) \times f(x + i, y + j) \rbrack$
 
-- `w(i, j)` ⟶ weight of mask/filter
-- `f(x + i, y + j)` ⟶ corresponding image pixel
-- After operation, `f(x, y)` (center of mask) is replaced with with response.
+- $w(i, j) \longrightarrow$ weight of mask/filter
+- $f(x + i, y + j) \longrightarrow$ corresponding image pixel
+- After operation, $f(x, y)$ (center of mask) is replaced with with response.
 
 ::: tip NOTE
 On the edges of an image, the row and/or column is mirrored appropriately to ensure proper filter operation. Defaulting it to `0` negatively affects the response on the edges.
@@ -34,15 +31,14 @@ On the edges of an image, the row and/or column is mirrored appropriately to ens
 
 Takes the average of image matrix under the mask.
 
-```cs:no-line-numbers
-// Base is the building block of the mask
-Base = (1/3) | 1  1  1 |
-Mask = Base * Transpose(Base)
-
-Mask = (1/9) | 1  1  1 |
-             | 1  1  1 |
-             | 1  1  1 |
-```
+$$
+\dfrac{1}{9}
+\begin{bmatrix}
+1 & 1 & 1\\
+1 & 1 & 1\\
+1 & 1 & 1
+\end{bmatrix}
+$$
 
 ### Weighted Average Filter
 
@@ -50,108 +46,58 @@ Takes the weighted average of the image matrix under the mask. This gives us fle
 
 Weighted average produces smoother output on detailed images with a lot of variation in vibrance region-to-region.
 
-```cs:no-line-numbers
-// Base is the building block of the mask
-Base = (1/4) | 1  2  1 |
-Mask = Base * Transpose(Base)
-
-Mask = (1/16) | 1  2  1 |
-              | 2  4  2 |
-              | 1  2  1 |
-```
+$$
+\dfrac{1}{16}
+\begin{bmatrix}
+1 & 2 & 1\\
+2 & 4 & 2\\
+1 & 2 & 1
+\end{bmatrix}
+$$
 
 ### Median Filter
 
-```cs:no-line-numbers
-// Median of matrix under the mask
-Response = Median(f(x + i, y + j))
+Takes the median of values under the mask.
 
-// Example
-f(x + i, y + j) = | 10  20  30 |
-                  | 10  50  90 |
-                  | 50  50  70 |
-
-Median.Sort(10, 20, 30, 10, 50, 90, 50, 50, 70)
-Median(10, 10, 20, 30, 50, 50, 50, 70, 90) = 50
-```
+$\text{Response} = \text{Median} \lparen f(x+i, y+j) \rparen$
 
 ### Maximum Filter
 
-```cs:no-line-numbers
-// Maximum of matrix under the mask
-Response = Maximum(f(x + i, y + j))
+Takes the maximum of values under the mask.
 
-// Example
-f(x + i, y + j) = | 10  20  30 |
-                  | 10  50  90 |
-                  | 50  50  70 |
-
-Maximum(10, 20, 30, 10, 50, 90, 50, 50, 70) = 90
-```
+$\text{Response} = \text{Maximum} \lparen f(x+i, y+j) \rparen$
 
 ### Minimum Filter
 
-```cs:no-line-numbers
-// Minimum of matrix under the mask
-Response = Minimum(f(x + i, y + j))
+Takes the minimum of values under the mask.
 
-// Example
-f(x + i, y + j) = | 10  20  30 |
-                  | 10  50  90 |
-                  | 50  50  70 |
-
-Minimum(10, 20, 30, 10, 50, 90, 50, 50, 70) = 10
-```
+$\text{Response} = \text{Minimum} \lparen f(x+i, y+j) \rparen$
 
 ### Geometric Mean Filter
 
 Takes the geometric mean of values under the mask.
 
-```cs:no-line-numbers
-// Geometric mean formula ⟶ nᵗʰ root of product of values
-(x₁ * x₂ * ... * xₙ) ^ (1 / n)
+$\text{Geometric Mean} = \lparen x_1 \times x_2 \times \dots \times x_n \rparen ^ \frac{1}{n}$
 
-// Geometric mean of matrix under the mask
-Response = GeometricMean(f(x + i, y + j))
-
-// Example
-f(x + i, y + j) = | 10  20  30 |
-                  | 10  50  90 |
-                  | 50  50  70 |
-
-GeometricMean(10, 20, 30, 10, 50, 90, 50, 50, 70)
-(10 * 20 * 30 * 10 * 50 * 90 * 50 * 50 * 70) ^ (1 / 9)
-```
+$\text{Response} = \text{Geometric Mean} \lparen f(x+i, y+j) \rparen$
 
 ### Harmonic Mean Filter
 
 Takes the harmonic mean of values under the mask.
 
-```cs:no-line-numbers
-// Harmonic mean formula
-n / (1/x₁ + 1/x₂ + ... + 1/xₙ)
+$\text{Harmonic Mean} = \dfrac{n}{\frac{1}{x_1} + \frac{1}{x_2} + \dots + \frac{1}{x_n}}$
 
-// Harmonic mean of matrix under the mask
-Response = HarmonicMean(f(x + i, y + j))
-
-// Example
-f(x + i, y + j) = | 10  20  30 |
-                  | 10  50  90 |
-                  | 50  50  70 |
-
-HarmonicMean(10, 20, 30, 10, 50, 90, 50, 50, 70)
-9 / (1/10 + 1/20 + 1/30 + 1/10 + 1/50 + 1/90 + 1/50 + 1/50 + 1/70)
-```
+$\text{Response} = \text{Harmonic Mean} \lparen f(x+i, y+j) \rparen$
 
 ## Sharpening Spatial Filter
 
 - Used in sharpening, highlighting, and edge detection. This process highlights the sudden changes in `H/S/V` which usually happens at the edges of an object.
 - Since we are dealing with sudden change in `H/S/V`, concept of **derivative** (rate of change) is very useful in sharpening filters.
-- Since the values in an image are finite, the maximum change possible is `max(uint8)` to `min(uint8)` (or any datatype used by image) along adjacent pixels.
+- Since the values in an image are finite, the maximum change possible is $\lambda_{max}$ to $\lambda_{max}$ along adjacent pixels.
 - In context of an image matrix
-  - `f(x)` ⟶ current pixel
-  - `f(x + 1)` ⟶ next pixel
-  - `f(x - 1)` ⟶ previous pixel
+  - $f(x) \longrightarrow$ current pixel
+  - $f(x + 1) \longrightarrow$ next pixel
+  - $f(x - 1) \longrightarrow$ previous pixel
 
 ### First Order Derivative Filter
 
@@ -161,10 +107,7 @@ Characteristics of first order derivatives
 - Must be non-zero at onset of gray level ramp/change
 - Must be non-zero along ramp
 
-```cs:no-line-numbers
-// Mathematical definition
-f′ = f(x + 1) - f(x)
-```
+$\dfrac{df}{dx} = f(x + 1) - f(x)$
 
 ### Second Order Derivate Filter
 
@@ -174,10 +117,7 @@ Characteristics of second order derivatives
 - Must be non-zero at onset of gray level ramp/change
 - Must be zero along ramp
 
-```cs:no-line-numbers
-// Mathematical definition
-f′′ = f(x + 1) + f(x - 1) - 2 * f(x)
-```
+$\dfrac{d^2f}{dx^2} =  f(x + 1) + f(x - 1) - 2 f(x)$
 
 ### Image Profile
 
@@ -188,40 +128,50 @@ f′′ = f(x + 1) + f(x - 1) - 2 * f(x)
 
 #### Conclusions from Image Profile
 
-- `f′` ⟶ highlights thicker edges as it has non-zero response to ramps
-- `f′′` ⟶ highlights finer details as it has strong response to isolated points
+- $f\prime \longrightarrow$ highlights thicker edges as it has non-zero response to ramps
+- $f\prime\prime \longrightarrow$ highlights finer details as it has strong response to isolated points
 
 ### Laplacian Filter
 
 - Works on principle of second order derivative filter.
-- Since we'll use it on a mask, and not on a linear image profile, we have to modify the definition to include both `x-axis` and `y-axis`.
+- Since we'll use it on a mask, and not on a linear image profile, we have to modify the definition to include both $x-axis$ and $y-axis$.
 
-```cs:no-line-numbers
-// Partial derivative
-f′′ = f′′(∂x) + f′′(∂y)
-f′′(∂x) = f(x + 1, y) + f(x - 1, y) - 2 * f(x, y)
-f′′(∂y) = f(x, y + 1) + f(x, y - 1) - 2 * f(x, y)
+$
+f\prime\prime = \dfrac{\partial^2f}{\partial x^2} + \dfrac{\partial^2f}{\partial y^2} \\
+\dfrac{\partial^2f}{\partial x^2} = f(x + 1, y) + f(x - 1, y) - 2 f(x, y)\\ \ \\
+\dfrac{\partial^2f}{\partial y^2} = f(x, y + 1) + f(x, y - 1) - 2 f(x, y)\\ \ \\
+f\prime\prime = f(x + 1, y) + f(x - 1, y) + f(x, y + 1) + f(x, y - 1) - 4 f(x, y)
+$
 
-f′′ = f(x + 1, y) + f(x - 1, y) + f(x, y + 1) + f(x, y - 1) - 4 * f(x, y)
-//    |<---------------------along axis------------------>|  |<-center->|
-```
+#### Mathematical Laplacian Mask
 
-```cs:no-line-numbers
-// Mathematical Laplacian filter
-Mask = |  0   1   0  |
-       |  1  -4   1  |
-       |  0   1   0  |
+$$
+\begin{bmatrix}
+0 &  1 & 0\\
+1 & -4 & 1\\
+0 &  1 & 0
+\end{bmatrix}
+$$
 
-// Modified Laplacian filter
-Mask = |  0  -1   0  |
-       | -1   4  -1  |
-       |  0  -1   0  |
+#### Modified Laplacian Mask
 
-// Continuous Laplacian filter
-Mask = | -1  -1  -1  |
-       | -1   8  -1  |
-       | -1  -1  -1  |
-```
+$$
+\begin{bmatrix}
+ 0 & -1 &  0\\
+-1 &  4 & -1\\
+ 0 & -1 &  0
+\end{bmatrix}
+$$
+
+#### Continuous Laplacian Mask
+
+$$
+\begin{bmatrix}
+-1 & -1 & -1\\
+-1 &  8 & -1\\
+-1 & -1 & -1
+\end{bmatrix}
+$$
 
 ::: tip NOTE
 In context of image processing, we want to give more weightage to the center pixel of the mask.
@@ -244,14 +194,14 @@ sharpImage(x, y) = originalImage(x, y) - blurredImage(x, y)
 
 ## Image Enhancement in Frequency Domain
 
-- Spatial domain (input) ⟶ frequency domain (processing) ⟶ spatial domain (output).
+- Spatial domain (input) $\longrightarrow$ frequency domain (processing) $\longrightarrow$ spatial domain (output).
 - Removes high or low frequencies.
 - Change (function) is applied to entire image at once. There are no masks involved.
 
 ### Fourier Transform
 
-- Spatial domain ⟶ frequency domain | DFT
-- Frequency domain ⟶ spatial domain | IDFT
+- Spatial domain $\longrightarrow$ frequency domain | DFT
+- Frequency domain $\longrightarrow$ spatial domain | IDFT
 - In context of DIP, we have to take two-dimensional Fourier transform
 
 ```cs:no-line-numbers
@@ -308,9 +258,9 @@ g(x, y) * (-1)^(x + y)
 
 ### Filter Parameters
 
-- `D₀` ⟶ non-negative constant to adjust the filter level
-- `D(u, v)` ⟶ distance from point `(u, v)`
-- `n` is the sharpness of the filter. If `n ⟶ ∞`, the filter becomes ideal.
+- `D₀` $\longrightarrow$ non-negative constant to adjust the filter level
+- `D(u, v)` $\longrightarrow$ distance from point `(u, v)`
+- `n` is the sharpness of the filter. If `n $\longrightarrow$ ∞`, the filter becomes ideal.
 
 ```cs:no-line-numbers
 // Distance function for an MxN image
@@ -332,8 +282,8 @@ D(u, v) = sqrt[ (u - M / 2)^2 + (v - N / 2)^2 ]
 
 ```cs:no-line-numbers
 // Filter function
-H(u, v) = | 1   ⟶   D(u, v) ≤ D₀
-          | 0   ⟶   D(u, v) > D₀
+H(u, v) = | 1   $\longrightarrow$   D(u, v) ≤ D₀
+          | 0   $\longrightarrow$   D(u, v) > D₀
 ```
 
 ### Butterworth Lowpass Filter
@@ -361,8 +311,8 @@ H(u, v) = e ^ { -D²(u, v) / (2 * D₀²) }
 
 ```cs:no-line-numbers
 // Filter function
-H(u, v) = | 0   ⟶   D(u, v) ≤ D₀
-          | 1   ⟶   D(u, v) > D₀
+H(u, v) = | 0   $\longrightarrow$   D(u, v) ≤ D₀
+          | 1   $\longrightarrow$   D(u, v) > D₀
 ```
 
 ### Butterworth Highpass Filter
