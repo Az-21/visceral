@@ -19,23 +19,13 @@ export default defineUserConfig<DefaultThemeOptions>({
   },
   plugins: [
     // Syntax Highlighter
-    [
-      "@vuepress/plugin-shiki",
-      {
-        theme: "material-darker",
-      },
-    ],
+    ["@vuepress/plugin-shiki", { theme: "material-darker" }],
 
     // Chart.js
     ["vuepress-plugin-chart"],
 
     // Markdown extended
-    [
-      "@renovamen/vuepress-plugin-md-plus",
-      {
-        all: true,
-      },
-    ],
+    ["@renovamen/vuepress-plugin-md-plus", { all: true }],
 
     // GitHub Discussions via Giscus
     [
@@ -52,5 +42,8 @@ export default defineUserConfig<DefaultThemeOptions>({
         crossorigin: "anonymous",
       },
     ],
+
+    // KaTeX
+    ["@renovamen/vuepress-plugin-katex"],
   ],
 });
