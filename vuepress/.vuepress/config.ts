@@ -39,7 +39,6 @@ export default defineUserConfig<DefaultThemeOptions>({
         reactionsEnabled: "1",
         theme: "preferred_color_scheme",
         lang: "auto",
-        crossorigin: "anonymous",
       },
     ],
 
