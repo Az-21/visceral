@@ -25,5 +25,3 @@ npm run dev -- --open
 
 - [SvelteKit Docs](https://kit.svelte.dev/docs)
 - [Tailwind Addon](https://github.com/svelte-add/tailwindcss)
-
-<Giscus :theme="theme" :lang="lang" :reactionsEnabled="reactionsEnabled" />

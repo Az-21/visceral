@@ -343,5 +343,3 @@ recombinedImage = cat(3, hChannel, sChannel, vChannel);
 ```
 
 Using the same modification techniques used for grayscale, we can enhance the colored images by splitting them into different channels and applying enhancement techniques on them, and then recombining the channels.
-
-<Giscus :theme="theme" :lang="lang" :reactionsEnabled="reactionsEnabled" />

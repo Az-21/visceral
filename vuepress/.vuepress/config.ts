@@ -21,26 +21,8 @@ export default defineUserConfig<DefaultThemeOptions>({
     // Syntax Highlighter
     ["@vuepress/plugin-shiki", { theme: "material-darker" }],
 
-    // Chart.js
-    ["vuepress-plugin-chart"],
-
     // Markdown extended
     ["@renovamen/vuepress-plugin-md-plus", { all: true }],
-
-    // GitHub Discussions via Giscus
-    [
-      "vuepress-plugin-giscus",
-      {
-        repo: "Az-21/visceral",
-        repoId: "R_kgDOG9uDLA ",
-        category: "General",
-        categoryId: "DIC_kwDOG9uDLM4COGxh",
-        mapping: "pathname",
-        reactionsEnabled: "1",
-        theme: "preferred_color_scheme",
-        lang: "auto",
-      },
-    ],
 
     // KaTeX
     [

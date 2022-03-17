@@ -25,12 +25,13 @@ Download `RealESRGANv2-animevideo-xsx4.pth` and place it in `.\experiments\pretr
 Create a virtual environment named `artemis` using Anaconda
 
 Add conda-forge channel
+
 ```ps
 conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-### Run following sections' code using Anaconda Command Prompt**
+### Run following sections' code using Anaconda Command Prompt\*\*
 
 **Ensure you are in `(artemis)` virual environment before proceeding.**
 
@@ -69,5 +70,3 @@ pip cache purge
 pip install torch -f https://download.pytorch.org/whl/torch_stable.html
 python setup.py develop
 ```
-
-<Giscus :theme="theme" :lang="lang" :reactionsEnabled="reactionsEnabled" />

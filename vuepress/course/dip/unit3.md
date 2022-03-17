@@ -332,5 +332,3 @@ H(u, v) = 1 - e ^ { -D²(u, v) / (2 * D₀²) }
 ## Summary of Frequency Filters
 
 ![HPF](https://player.slideplayer.com/90/14547361/slides/slide_18.jpg)
-
-<Giscus :theme="theme" :lang="lang" :reactionsEnabled="reactionsEnabled" />

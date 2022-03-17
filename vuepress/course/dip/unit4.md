@@ -496,5 +496,3 @@ Original Image $\longrightarrow$ Degrade Function $\longrightarrow$ Degraded Ima
 1. Quantum limiting imaging in x-ray
 2. CT (computed tomography) scan in healthcare
 3. Image postprocessing in phone camera
-
-<Giscus :theme="theme" :lang="lang" :reactionsEnabled="reactionsEnabled" />

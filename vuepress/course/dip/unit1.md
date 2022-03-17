@@ -194,9 +194,6 @@ $\text{Time} = \dfrac{\text{bits}}{\text{Baud Rate}}$
 
 $\text{Resolution} = \dfrac{\text{Cycle}}{mm} \times \dfrac{\text{Pixels}}{\text{Cycle}}$
 
-
 ## Numerical on Image Formation
 
 $\dfrac{\text{Height of Object}}{\text{Lens to Object Distance}} = \dfrac{\text{Height of Image}}{\text{Lens to Retina Distance}}$
-
-<Giscus :theme="theme" :lang="lang" :reactionsEnabled="reactionsEnabled" />
