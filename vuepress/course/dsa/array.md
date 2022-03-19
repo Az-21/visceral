@@ -158,29 +158,144 @@ void PrintSubarrays(int list[], int length)
 }
 ```
 
-## Sum of Subarray <Badge title="Standard Problem" vertical="middle" />
+## Sum of Subarray <Badge title="Algorithm" vertical="middle" />
 
-- $O(n^2)$ time complexity
-- Prefix sum approach (cumulative sum)
+- $O(n)$ time complexity
+- Prefix sum approach (cumulative sum) $\longrightarrow$ [Kadane's Algorithm](https://medium.com/@rsinghal757/kadanes-algorithm-dynamic-programming-how-and-why-does-it-work-3fd8849ed73d).
+- Basically, if the number becomes `-ve` at any point in time, just reset the cumulative sum to $0$.
 
 ```cpp
-void MaximumSubarraySum(int list[], int length)
+void KadaneAlgorithm(int list[], int length)
 {
-  int maxSum = INT_MIN;
-  std::vector<int> prefixSum = { 0 };
+  int maxSum = 0;
+  int currentSum = 0;
 
-  // Generate cumulative/prefix sum array. 1st element will be zero, modify accordingly.
-  for(size_t i = 0; i <= length; i++) {
-    prefixSum.push_back(prefixSum[i] + list[i]);
-  }
-
-  for(size_t i = 0; i < length; i++) {
-    for(size_t j = i; j < length; j++) {
-      int subarraySum = prefixSum[j + 1] - prefixSum[i];
-      maxSum = std::max(maxSum, subarraySum);
-    }
+  for(size_t i = 0; i < length; i++)
+  {
+    currentSum += list[i];
+    if(currentSum < 0) { currentSum = 0; } // Reset if cumulative sum becomes negative
+    if(currentSum > maxSum) { maxSum = currentSum; } // New maximum
   }
 
   std::cout << std::format("Maximum subarray sum is {}", maxSum);
 }
 ```
+
+## Vector
+
+- Standard C/C++ array is static i.e. they cannot change in size or use runtime `n` length.
+- Vector `std::vector<T>` was introduced as a dynamic array.
+- Vector is **pass by value**. This also eliminates the requirement of sending `std::size(list)` as a function argument.
+
+```cpp
+// Initialize
+std::vector<int> list; // Empty vector
+
+// Fill constructor
+std::vector<int> list(10, 0); // (Size, fill with)
+
+// Remove last element
+list.pop_back();
+
+// Append to vector
+list.puch_back(value);
+
+// Pass by reference instead
+vector<T>&
+```
+
+## HackerRank Array Problems
+
+### Array Left Rotation
+
+[Link](https://www.hackerrank.com/challenges/array-left-rotation)
+
+```cpp
+#include <vector>
+#include <iostream>
+
+int main()
+{
+  int length;
+  int shift;
+  std::vector<int> list;
+
+  // Input
+  std::cin >> length >> shift;
+  for(size_t i = 0; i < length; i++)
+  {
+    int input;
+    std::cin >> input;
+    list.push_back(input);
+  }
+
+  // Shift Operation
+  for(int i = 0; i < shift; i++)
+  {
+    list.insert(list.begin() + length, list.front()); // Copy front to last
+    list.erase(list.begin() + 0); // Pop first
+  }
+
+  // Output
+  for(size_t i = 0; i < length; i++)
+  {
+    std::cout << list[i] << " ";
+  }
+
+  std::cout << std::endl;
+}
+```
+
+### Array Query
+
+[Link](https://www.hackerrank.com/challenges/sparse-arrays)
+
+```cpp
+#include <vector>
+#include <iostream>
+
+int main()
+{
+  int queryLength, stringLength;
+  std::vector<int> matchesList;
+  std::vector<std::string> queryList, stringList;
+
+  // Input
+  std::cin >> stringLength;
+  for(size_t i = 0; i < stringLength; i++)
+  {
+    std::string input;
+    std::cin >> input;
+    stringList.push_back(input);
+  }
+
+  std::cin >> queryLength;
+  for(size_t i = 0; i < queryLength; i++)
+  {
+    std::string input;
+    std::cin >> input;
+    queryList.push_back(input);
+  }
+
+  // Query
+  for(std::string query : queryList)
+  {
+    int matches = 0;
+    for(int i = 0; i < stringLength; i++)
+    {
+      if(query == stringList[i]) { matches++; }
+      //stringList.erase(stringList.begin() + i); // Remove matched element from list
+    }
+
+    matchesList.push_back(matches);
+  }
+
+  // Output
+  for(int matches : matchesList)
+  {
+    std::cout << matches << std::endl;
+  }
+
+}
+```
+
