@@ -54,6 +54,10 @@ v.clear()
 
 // Iterator
 for(const auto& element : v) { // Do something over entire collection }
+
+// Print
+std::ranges::copy(list, std::ostream_iterator<int>(std::cout, " "));             // C++20
+std::copy(list.begin(), list.end(), std::ostream_iterator<int>(std::cout, " ")); // C++17
 ```
 
 :::tip
